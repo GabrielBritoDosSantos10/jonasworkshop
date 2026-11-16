@@ -1,5 +1,5 @@
 
-import { materials } from "./src/data/materials.js";
+import { materials } from "../data/materials.js";
 
 // Verifica se existem materiais cadastrados
 console.log("Total de materiais:", materials.length);
