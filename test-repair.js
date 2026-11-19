@@ -1,44 +1,49 @@
 
-import { RepairSystem } from "./src/systems/RepairSystem.js";
+import { GameManager } from "./src/systems/GameManager.js";
 
-const repairSystem = new RepairSystem();
+const game = new GameManager();
 
-// 1. Iniciar reparo
-console.log("INICIANDO REPARO:");
+// 1. Iniciar serviço
+console.log("=== INICIANDO SERVIÇO ===");
 
 console.log(
-    repairSystem.startRepair("screen_repair")
+    game.startGame("screen_repair", {
+        customerId: "customer_01",
+        deviceId: "device_01"
+    })
 );
 
-// 2. Concluir diagnóstico
-console.log("\nCONCLUINDO DIAGNÓSTICO:");
+// 2. Diagnóstico
+console.log("\n=== DIAGNÓSTICO ===");
 
-console.log(repairSystem.completeStep());
+console.log(game.completeCurrentStep());
 
-// 3. Selecionar material
-console.log("\nSELECIONANDO MATERIAL:");
+// 3. Escolher material
+console.log("\n=== SELEÇÃO DE MATERIAL ===");
 
-console.log(repairSystem.submitMaterial("glass"));
+console.log(game.submitMaterial("glass"));
 
-// 4. Avançar para substituição
-console.log("\nAVANÇANDO ETAPA:");
+// 4. Substituição
+console.log("\n=== SUBSTITUIÇÃO ===");
 
-console.log(repairSystem.completeStep());
+console.log(game.completeCurrentStep());
 
-// 5. Concluir substituição
-console.log(repairSystem.completeStep());
+// 5. Teste
+console.log("\n=== TESTE DO APARELHO ===");
 
-// 6. Concluir teste
-console.log(repairSystem.completeStep());
+console.log(game.completeCurrentStep());
 
-// 7. Concluir reciclagem
-console.log(repairSystem.completeStep());
+// 6. Reciclagem
+console.log("\n=== RECICLAGEM ===");
 
-// 8. Resultado
-console.log("\nRESULTADO FINAL:");
+console.log(game.completeCurrentStep());
 
-console.log(repairSystem.getResult());
+// 7. Estado final
+console.log("\n=== ESTADO FINAL ===");
 
-console.log("\nPROGRESSO:");
+console.log(game.getGameState());
 
-console.log(repairSystem.getProgress());
+// 8. Histórico
+console.log("\n=== HISTÓRICO ===");
+
+console.log(game.getRepairHistory());
